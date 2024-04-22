@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:kosku/add_kos/kos_screen.dart';
 import 'package:kosku/mahasiswa/mahasiswa_page.dart';
+import 'package:kosku/screens/datas/datas_screen.dart';
 import 'package:kosku/screens/home_screen.dart';
 import 'package:kosku/screens/profile_screen.dart';
 import 'package:kosku/screens/promo_screen.dart';
@@ -23,6 +24,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Home Screen'),
+      routes: {
+        '/mahasiswa-screen': (context) => const MahasiswaScreen(),
+        '/datas-screen': (context) => const DatasScreen(),
+      }
     );
   }
 }
@@ -136,6 +141,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialPageRoute(builder: (context) => KosScreen()),
                     );
                   },
+              ),
+              ListTile(
+                leading: Icon(Icons.contact_emergency_outlined),
+                title: Text('datas'),
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(context, '/datas-screen');
+                },
               ),
               ListTile(
                 leading: Icon(Icons.settings),

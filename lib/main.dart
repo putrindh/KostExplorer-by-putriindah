@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kosku/mahasiswa/mahasiswa_page.dart';
+import 'package:kosku/screens/datas/datas_screen.dart';
 // ignore: unused_import
 
 import 'screen/login_screen.dart'; // Import halaman login
@@ -17,6 +19,10 @@ class MyApp extends StatelessWidget {
       ),
       // Tentukan halaman awal aplikasi sebagai halaman login
       home: Login(), // Mengarahkan ke halaman login
+      routes: {
+        '/mahasiswa-screen': (context) => const MahasiswaScreen(),
+        '/datas-screen': (context) => const DatasScreen(),
+      }
     );
   }
 }
