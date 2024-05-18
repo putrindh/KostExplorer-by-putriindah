@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:kosku/add_kos/kos_screen.dart';
+import 'package:kosku/customer_service/cust_sreen.dart';
 import 'package:kosku/mahasiswa/mahasiswa_page.dart';
 import 'package:kosku/screens/datas/datas_screen.dart';
 import 'package:kosku/screens/home_screen.dart';
 import 'package:kosku/screens/profile_screen.dart';
 import 'package:kosku/screens/promo_screen.dart';
+import 'package:kosku/screens/tentang_kami.dart';
 import 'package:kosku/utils/constants.dart';
 
 void main() {
@@ -131,6 +133,26 @@ class _MyHomePageState extends State<MyHomePage> {
                       MaterialPageRoute(builder: (context) => MahasiswaScreen()),
                     );
                   },
+              ),
+              ListTile(
+                leading: Icon(Icons.spatial_audio),
+                title: Text('Tentang Kami'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const TentangKami()),
+                  );
+                },
+              ),
+               ListTile(
+                leading: Icon(Icons.spatial_audio),
+                title: Text('Customer_Service'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CustomerScreen()),
+                  );
+                },
               ),
               ListTile(
                 leading: Icon(Icons.contact_emergency_outlined),

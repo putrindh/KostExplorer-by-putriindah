@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kosku/dto/datas.dart';
 import 'package:kosku/endpoints/datas_endpoint.dart';
+import 'package:kosku/screens/datas/edit_datas.dart';
 import 'package:kosku/screens/datas/new_datas.dart';
 import 'package:kosku/services/datas_service.dart';
 
@@ -61,7 +62,40 @@ class _DatasScreenState extends State<DatasScreen> {
                           color: const Color.fromARGB(255, 36, 31, 31),
                           fontWeight: FontWeight.normal,
                         )),
-                    const Divider()
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => EditDatas(item.idDatas),
+                              ),
+                            );
+                          },
+                          icon: Icon(Icons.edit),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            // Call deleteDatas method and pass the ID of the current item
+                            DataService.deleteDatas(item.idDatas).then((_) {
+                              // Show snackbar when deletion is successful
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text('Data successfully deleted'),
+                                ),
+                              );
+                            }).catchError((error) {
+                              // Handle error if deletion fails
+                              print('Error deleting data: $error');
+                            });
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
+                      ],
+                    ),
+                    const Divider(),
                   ]),
                 );
               },

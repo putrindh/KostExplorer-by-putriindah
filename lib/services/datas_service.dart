@@ -16,6 +16,47 @@ class DataService {
       // Handle error
       throw Exception('Failed to load Datas');
     }
+    
+  }
+  static Future<void> editDatas(
+      int id, String newName, String? newImageUrl) async {
+    final url =
+        '${Endpoints.datas}/$id'; // URL untuk mengedit data dengan ID tertentu
+    final Map<String, dynamic> requestBody = {
+      'name': newName,
+      'image_url': newImageUrl,
+      // Tambahkan bidang lain yang ingin Anda edit sesuai kebutuhan
+    };
+
+    final response = await http.put(
+      Uri.parse(url),
+      body: jsonEncode(requestBody),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to edit Data');
+    }
+  }
+
+  static Future<void> deleteDatas(
+    int id,
+  ) async {
+    final url =
+        '${Endpoints.datas}/$id'; // URL untuk menghapus data dengan ID tertentu
+
+    final response = await http.delete(
+      Uri.parse(url),
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+    );
+
+    if (response.statusCode != 200) {
+      throw Exception('Failed to delete Data');
+    }
   }
 
   // // post data to endpoint Datas

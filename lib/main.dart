@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kosku/customer_service/cust_sreen.dart';
 import 'package:kosku/mahasiswa/mahasiswa_page.dart';
 import 'package:kosku/screens/datas/datas_screen.dart';
 // ignore: unused_import
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/mahasiswa-screen': (context) => const MahasiswaScreen(),
         '/datas-screen': (context) => const DatasScreen(),
+        '/customer-service-screen': (context) => const CustomerScreen()
       }
     );
   }
